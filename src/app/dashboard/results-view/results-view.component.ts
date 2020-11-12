@@ -40,7 +40,11 @@ export class ResultsViewComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((votes: Vote[]) => {
         this.voteCounts = votes.reduce((acc, curr) => {
-          acc[curr.nominee] = (!acc[curr.nominee]) ? 1 : acc[curr.nominee]++;
+          if (!acc[curr.nominee]) {
+            acc[curr.nominee] = 1;
+          } else {
+            acc[curr.nominee] += 1;
+          }
           return acc;
         }, {});
       });
