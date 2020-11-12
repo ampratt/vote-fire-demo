@@ -39,10 +39,18 @@
     </div>
   </div>
 
-  <p-messages severity="{{ election.winner ? 'success' : 'warn'}}" class="p-m-5">
+  <p-messages severity="{{ election.winner?.length === 1 ? 'success' : 'warn'}}" class="p-m-5">
     <ng-template pTemplate>
-      <h2 class="p-mb-4" *ngIf="election.winner">WINNER</h2>
-      <h3>{{ election.winner ? election.winner : 'Winner is not yet declared' }}</h3>
+      <div class="p-d-flex p-flex-column">
+        <h2 class="p-mb-2" *ngIf="election.winner?.length === 1">WINNER</h2>
+        <h2 class="p-mb-2" *ngIf="election.winner?.length > 1">TIE</h2>
+        
+        <h3 class="p-p-2" *ngIf="!election.winner?.length">Winner is not yet declared</h3>
+        <h3 *ngIf="election.winner?.length > 1">
+          <div class="p-p-2" *ngFor="let winner of election.winner">{{ winner.nominee }}: {{ winner.votes }} votes</div>
+        </h3>
+        <h3 class="p-p-2" *ngIf="election.winner?.length === 1">{{ election.winner[0]?.nominee }}</h3>
+      </div>
     </ng-template>
   </p-messages>
 

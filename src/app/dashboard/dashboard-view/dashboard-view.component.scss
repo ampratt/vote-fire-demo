@@ -1,3 +1,10 @@
+@import '../../../app/styles/variables';
+
+:host::ng-deep {
+  .p-menubar {
+    background-color: $background; // var(--surface-a);
+  }
+}
 
 .page-wrapper {
   min-height: 100%;

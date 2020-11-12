@@ -12,7 +12,7 @@ export class Election {
     status: string;
     preliminaryResults: {};
     finalResults: {};
-    winner: string;
+    winner: any[];
 }
 
 export class VotedUser {

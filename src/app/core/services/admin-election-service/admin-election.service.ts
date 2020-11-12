@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import { AngularFireFunctions } from '@angular/fire/functions';
+
 import { AuthService } from '../auth/auth.service';
 import { DbTable } from '../../models/firebase.model';
 import { Election, ElectionStatus } from '../../models/election.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +21,7 @@ export class AdminElectionService {
   constructor(
     private auth: AuthService,
     private afs: AngularFirestore,
+    private fns: AngularFireFunctions
   ) {
     this.user = this.auth.getAuthenticatedUser();
     this.auth.user$.subscribe((user: User) => this.user = user);
@@ -46,6 +50,12 @@ export class AdminElectionService {
   updateElectionByRef(ref: AngularFirestoreDocument<Election>, data: Election): Promise<void> {
     return ref.update(data);
   }
+
+  closeAndCountVote(election: Election): Observable<Election> {
+    const callable = this.fns.httpsCallable('closeAndCountVote');
+    return callable(election);
+  }
+
 
   // Votes
 
@@ -125,7 +135,7 @@ export class AdminElectionService {
       candidates: election?.candidates,
       preliminaryResults: election?.preliminaryResults || {},
       finalResults: election?.finalResults || {},
-      winner: election?.winner || ''
+      winner: election?.winner || []
     };
   }
 

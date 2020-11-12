@@ -13,14 +13,20 @@ export const aggregatePreliminaryResult = functions.firestore
             const vote = snapshot.data();
 
             await db.runTransaction(async (t) => {
-                const election = await t.get(electionRef);
+                const electionSnapshot = await t.get(electionRef);
+                const election = electionSnapshot.data();
 
                 if (!election) {
                     logger.warn('Election does not exist. Terminating.');
                     return null;
                 }
 
-                let electionPreliminaryResults = election.data()?.preliminaryResults;
+                if (election.status === 'closed') {
+                    logger.warn('Voting is closed. Terminating.');
+                    return null;
+                }
+
+                let electionPreliminaryResults = election?.preliminaryResults;
 
                 if (!electionPreliminaryResults) {
                     electionPreliminaryResults = {};
