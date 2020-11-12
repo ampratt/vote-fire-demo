@@ -1,0 +1,50 @@
+<div class="view-container p-text-center" *ngIf="election$ | async as election">
+
+  <div class="p-pb-5">
+    <h1 class="">{{ election?.title }}</h1>
+    <h3 class="page-title">Election Results</h3>
+    
+    <div>
+      <div>Open from: {{ election.startDate?.toDate() | date:'short'}}</div>
+      <div>Open till: {{ election.endDate?.toDate() | date:'short'}}</div>
+    </div>
+  </div>
+
+  <p-messages severity="info" class="p-m-5" *ngIf="votedUser$ | async as votedUser">
+    <ng-template pTemplate>
+      <h3>You voted on {{ votedUser.insertDate.toDate() | date:'short' }}</h3>
+    </ng-template>
+  </p-messages>
+  
+  <div class="p-m-5">
+    <h2 class="p-mb-4">Candidate Results</h2>
+    <div class="p-my-6 p-d-flex p-jc-evenly" >
+      <p-card styleClass="p-shadow-4" class="p-m-4 w-100" *ngFor="let candidate of election.candidates; let index = i">
+        <h2 class="p-mb-2">{{ candidate }}</h2>
+        <div class="p-d-flex p-jc-between vote-count-row" id="vote-collection-count" *ngIf="!!voteCounts">
+          <div class="">Vote Count (<small>votes collection</small>)</div>
+          <div class="">{{ voteCounts[candidate] }}</div>
+        </div>
+
+        <div class="p-d-flex p-jc-between vote-count-row" id="vote-aggregated-preliminary-count">
+          <div class="">Preliminary Count (<small>aggregated</small>)</div>
+          <div class="">{{ election.preliminaryResults[candidate] }}</div>
+        </div>
+
+        <div class="p-d-flex p-jc-between vote-count-row" id="vote-aggregated-final-count">
+          <div class="">Final Count (<small>aggregated</small>)</div>
+          <div class="">{{ election.finalResults[candidate] }}</div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <p-messages severity="{{ election.winner ? 'success' : 'warn'}}" class="p-m-5">
+    <ng-template pTemplate>
+      <h2 class="p-mb-4" *ngIf="election.winner">WINNER</h2>
+      <h3>{{ election.winner ? election.winner : 'Winner is not yet declared' }}</h3>
+    </ng-template>
+  </p-messages>
+
+
+</div>

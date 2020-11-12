@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "aaron-pratt": {
+      "hosting": {
+        "vote-fire-demo": [
+          "aaron-pratt"
+        ]
+      }
+    }
+  }
+}

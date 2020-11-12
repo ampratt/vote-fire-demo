@@ -1,0 +1,35 @@
+<form [formGroup]="loginForm">
+  <h2 class="p-my-4 p-text-center">Login</h2>
+
+  <div class="p-field">
+    <label for="email" class="">Email</label>
+    <div class="">
+      <input id="email" class="w-100" type="text" pInputText formControlName="email">
+    </div>
+  </div>
+  <div class="p-field">
+    <div class="">
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="password" class="">Password</label>
+    <div class="">
+      <input id="password" class="w-100" type="password" pInputText formControlName="password">
+    </div>
+  </div>
+  <div class="p-field">
+    <div class="">
+    </div>
+  </div>
+
+  <div class="p-field">
+    <button pButton pRipple class="login-btn"
+            type="button"
+            (click)="signInWithEmail()"
+            [disabled]="!loginForm.valid || loading" label="login">
+      <i *ngIf="loading" class="pi pi-spinner pi-spin"></i>
+    </button>
+  </div>
+
+</form>

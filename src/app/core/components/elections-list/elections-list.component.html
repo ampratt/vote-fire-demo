@@ -1,0 +1,38 @@
+<div class="container p-d-flex p-flex-column">
+
+  <div class="election-item p-d-flex p-jc-between p-py-5" *ngFor="let election of elections$ | async">
+    <div class="left p-d-flex">
+      <i class="pi pi-envelope p-mr-3" style="font-size: 2rem"></i>
+      
+      <div class="p-d-flex p-flex-column p-mx-4">
+        <h2 class=" p-mb-2 p-d-flex p-ai-center">
+          {{ election.title }}
+        </h2>
+        <small>Opens: {{ election.startDate.toDate() | date:'short' }}</small>
+        <small>Closes: {{ election.endDate.toDate() | date:'short' }}</small>
+      </div>
+    </div>
+      
+    <div class="buttons p-mx-4">
+      <button pButton pRipple
+              type="button"
+              label="Vote"
+              class="p-mr-2 p-button-raised"
+              (click)="handleVoteClicked(election.id)"></button>
+      <button pButton pRipple
+              type="button"
+              label="Results"
+              class="p-mr-2 p-button-raised p-button-info"
+              (click)="handleResultsClicked(election.id)"></button>
+      <button pButton pRipple
+              *showIfUser="'admin'"
+              type="button"
+              label="Close Voting"
+              class="p-mr-2 p-button-raised p-button-warning"
+              (click)="handleCloseElectionClicked(election.id)"></button>
+    </div>
+
+
+  </div>
+
+</div>

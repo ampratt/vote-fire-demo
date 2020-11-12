@@ -1,0 +1,9 @@
+@import "../../../../app/styles/variables";
+
+.election-item {
+  border-bottom: 1px solid $white;
+
+  &:hover {
+    background-color: lighten($background, 10%);
+  }
+}

@@ -1,0 +1,74 @@
+@import '_variables.scss';
+
+@keyframes Appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    /* background-color: rgba(0,0,0,0.2); */
+  }
+
+  to {
+    opacity: 1;
+    /* background-color: transparent; */
+  }
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: $lblue;
+  }
+}
+
+@keyframes loading-appear {
+  0% {
+    opacity: 0;
+    /* background-color: rgba(255,255,255,0.4); */
+  }
+
+  100% {
+    opacity: 1;
+    /* background-color: rgba(255,255,255,0.2); */
+  }
+}
+
+@keyframes success {
+  from {
+    background-color: rgba(0, 255, 0, 0.25);
+  }
+
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes deleterow {
+  from {
+    background-color: rgba(255, 0, 0, 0.25);
+  }
+
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes tabAppear {
+  from {
+    opacity: 0;
+    /* background-color: rgba(0,0,0,0.2); */
+  }
+
+  to {
+    opacity: 1;
+    /* background-color: transparent; */
+  }
+}

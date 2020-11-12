@@ -1,0 +1,9 @@
+@import '../../../styles/_variables.scss';
+
+:host {
+  border-bottom: 1px solid $lightgray;
+}
+
+.header-toolbar-container {
+  min-height: 55px;
+}

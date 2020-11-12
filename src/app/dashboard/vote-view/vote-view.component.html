@@ -1,0 +1,45 @@
+<div class="view-container p-text-center" *ngIf="election">
+
+  <h3 class="page-title">Voting for Election</h3>
+  <h1 class="page-title">'{{ election?.title }}'</h1>
+
+  <div>
+    <div>Open from: {{ election.startDate?.toDate() | date:'short'}}</div>
+    <div>Open till: {{ election.endDate?.toDate() | date:'short'}}</div>
+  </div>
+
+  <div class="p-m-5">
+    <p-card styleClass="p-shadow-4" class="login-container">
+      <h2 class="p-mb-4">Candidates</h2>
+      
+      <div class="p-my-6 p-jc-evenly p-d-flex ">
+        <div *ngFor="let candidate of election.candidates" class="p-field-checkbox">
+          <p-radioButton inpudIt="candidate" name="candidate" [value]="candidate" [(ngModel)]="selectedCandidate"></p-radioButton>
+          <label [for]="candidate">{{ candidate }}</label>
+        </div>
+      </div>
+    </p-card>
+  </div>
+
+  <div class="p-m-5">
+    <p-card styleClass="p-shadow-4" class="login-container">
+      <h4 class="p-m-5">Your vote will be cast for: '{{ selectedCandidate }}'</h4>
+    </p-card>
+  </div>
+
+  <div>
+    <button pButton pRipple class="p-button-raised p-button-primary p-m-5"
+            type="button"
+            (click)="submitVote()"
+            [disabled]="!selectedCandidate"
+            label="Submit Vote"></button>
+  </div>
+
+  <div>
+    <button pButton pRipple class="p-button-raised p-button-secondary p-m-2"
+            type="button"
+            label="Cancel"
+            [routerLink]="['/dashboard/elections']"></button>
+  </div>
+
+</div>

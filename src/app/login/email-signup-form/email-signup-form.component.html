@@ -1,0 +1,49 @@
+<form [formGroup]="registrationForm">
+  <h2 class="p-my-4 p-text-center">Create Account</h2>
+
+  <div class="p-field">
+    <label for="email" class="">Email</label>
+    <div class="">
+      <input id="email" class="w-100" type="text" pInputText formControlName="email">
+    </div>
+  </div>
+  <div class="p-field">
+    <div class="">
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="password" class="">Password</label>
+    <div class="">
+      <input id="password" class="w-100" type="password" pInputText formControlName="password">
+    </div>
+  </div>
+  <div class="p-field">
+    <div class="">
+   </div>
+  </div>
+
+  <div class="p-field">
+    <label for="passwordConfirm" class="">Confirm Password</label>
+    <div class="">
+      <input id="passwordConfirm" class="w-100" type="password" pInputText formControlName="passwordConfirm">
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="displayName" class="">Display Name</label>
+    <div class="">
+      <input id="displayName" class="w-100" type="text" pInputText formControlName="displayName">
+    </div>
+  </div>
+
+  <div class="p-field">
+    <button pButton pRipple class="login-btn"
+            type="button"
+            (click)="registerWithEmail()"
+            [disabled]="!registrationForm.valid || loading" label="Create Account">
+      <i *ngIf="loading" class="pi pi-spinner pi-spin"></i>
+    </button>
+  </div>
+
+</form>

@@ -1,0 +1,81 @@
+<div class="view-container">
+
+  <h1 class="page-title">Create New Election / Poll</h1>
+
+  <form [formGroup]="electionForm" class="container">
+  
+    <div class="p-field">
+      <label for="title" class="">Title</label>
+      <div class="">
+        <input id="title" class="w-100" type="text" pInputText formControlName="title">
+      </div>
+    </div>
+    <div class="p-field">
+      <div class="">
+      </div>
+    </div>
+
+    <div class="p-field">
+      <label for="startDate" class="">Start Date</label>
+      <div class="">
+        <p-calendar id="startDate" class="w-100" [showTime]="true" inputId="time" formControlName="startDate"></p-calendar>
+      </div>
+    </div>
+    <div class="p-field">
+      <div class="">
+      </div>
+    </div>
+  
+    <div class="p-field">
+      <label for="endDate" class="">End Date</label>
+      <div class="">
+        <p-calendar id="endDate" class="w-100" [showTime]="true" inputId="time" formControlName="endDate"></p-calendar>
+      </div>
+    </div>
+    <div class="p-field">
+      <div class="">
+      </div>
+    </div>
+  
+    <div formArrayName="candidates">
+      <h3>Candidates</h3> 
+      <!-- <label for="candidates" class="">Candidates</label> -->
+        
+        <div class="p-my-3" *ngFor="let candidate of candidates.controls; let i=index">
+          <div class="p-field">
+            <label class="">Candidate</label>
+            <div class="p-d-flex">
+              <input class="w-100 p-mr-2" type="text" pInputText [formControlName]="i">
+              <button pButton pRipple class="p-button-rounded p-button-outlined p-button-danger p-button-text p-mr-2"
+                      type="button"
+                      icon="pi pi-minus-circle"
+                      (click)="removeCandidate(i)"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-field">
+        <button pButton pRipple class="p-button-rounded p-button-outlined p-button-info p-button-text p-mr-2"
+                type="button"
+                icon="pi pi-plus-circle"
+                (click)="addCandidate()"
+                label="Add Candidate">
+        </button>
+    </div>
+
+    <div class="p-d-flex">
+      <button pButton pRipple class="p-button-raised p-button-primary p-mr-2"
+              type="button"
+              (click)="handleSave()"
+              [disabled]="!electionForm.valid" label="Create">
+      </button>
+      <button pButton pRipple class="p-button-raised p-button-secondary p-mr-2"
+              type="button"
+              (click)="handleCancel()"
+              label="Cancel">
+        </button>
+    </div>
+  
+  </form>
+
+</div>

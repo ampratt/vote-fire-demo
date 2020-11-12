@@ -1,0 +1,27 @@
+<p-menubar>
+  <ng-template pTemplate="start">
+    <a class="info navbar-brand p-d-flex p-ai-center p-mr-2" [routerLink]="'/dashboard'">
+      <img src="../../assets/images/icon-vote.png" alt="" class="p-mr-2" style="width: 35px;">
+      <span>AngularFire Vote</span>
+    </a>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <app-account-dropdown></app-account-dropdown>
+  </ng-template>
+</p-menubar>
+
+<div class="page-wrapper">
+
+  <app-header-toolbar></app-header-toolbar>
+  
+  <div class="dashboard-content-container p-rel">
+    <router-outlet></router-outlet>
+
+    <ngx-spinner [name]="'dashboard'">
+      <p class="loading">Loading...</p>
+    </ngx-spinner>
+    
+  </div>
+
+</div>

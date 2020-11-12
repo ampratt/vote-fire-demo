@@ -1,0 +1,23 @@
+<div class="header-toolbar-container container-flex p-py-0">
+  <div class="p-d-inline-flex p-ai-center">
+    <span *ngIf="title" class="title p-m-2">{{ title }}</span>
+  </div>
+
+  <div class="buttons-container p-ml-4">
+    <button *ngIf="showSave"
+            pButton pRipple type="button" icon="pi pi-save" class="p-button-text"
+            label="Save"
+            (click)="handleSave()"></button>
+    <button *ngIf="showEdit"
+            pButton pRipple type="button" icon="pi pi-pencil" class="p-button-text"
+            label="Edit"
+            (click)="handleEdit()"></button>
+  </div>
+
+  <div class="buttons-container p-ml-auto">
+    <button *showIfUser="'admin'" 
+            pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-text"
+            label="Create Election"
+            (click)="handleCreateElection()"></button>
+  </div>
+</div>
