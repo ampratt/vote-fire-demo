@@ -1,4 +1,3 @@
-// angular
 import { Directive, Input, OnInit } from '@angular/core';
 import { TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';

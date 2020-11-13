@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { AutoUnsubscribe } from 'src/app/core/decorators/auto-unsubscribe';
 import { Election, ElectionStatus } from 'src/app/core/models/election.model';
 import { User } from 'src/app/core/models/user.model';
@@ -88,24 +88,5 @@ export class CreateComponent implements OnInit {
 
     return payload;
   }
-
-  // private async initData() {
-  //   this.spinner.show();
-  //   if (this.isCreateForm || !this.articleId) {
-  //     this.articleId = await this.adminElectionService.createOrUpdate();
-  //   }
-  //   this.adminElectionService.getElection(this.articleId)
-  //     .snapshotChanges()
-  //     .pipe(takeUntil(this.unsubscribe$))
-  //     .subscribe((article) => {
-  //       this.election = {
-  //         id: article.payload.id,
-  //         ...article.payload.data()
-  //       };
-  //       this.buildForm(this.election);
-  //       this.spinner.hide();
-  //     });
-  // }
-
 
 }

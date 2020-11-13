@@ -1,7 +1,6 @@
 {
   "hosting": [
     {
-      "site": "vote-fire-demo",
       "target": "vote-fire-demo",
       "public": "dist/vote-fire-demo",
       "ignore": [

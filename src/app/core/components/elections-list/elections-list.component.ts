@@ -58,7 +58,6 @@ export class ElectionsListComponent implements OnInit {
         .pipe(takeUntil(this.unsubscribe$))
         .subscribe(
           (electionResult: Election) => {
-            console.log('electionResult ', electionResult);
             if (electionResult?.status === ElectionStatus.CLOSED) {
               this.notification.success(`Election '${electionResult.title}' set to ${electionResult.status}`);
             }

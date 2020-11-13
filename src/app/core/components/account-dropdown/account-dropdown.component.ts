@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
+import { AutoUnsubscribe } from '../../decorators/auto-unsubscribe';
 import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -10,12 +11,11 @@ import { AuthService } from '../../services/auth/auth.service';
   templateUrl: './account-dropdown.component.html',
   styleUrls: ['./account-dropdown.component.scss']
 })
+@AutoUnsubscribe()
 export class AccountDropdownComponent {
 
   items: MenuItem[];
   user: User;
-
-  private unsubscribe$ = new Subject<void>();
 
   constructor(
     public auth: AuthService,
