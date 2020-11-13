@@ -45,12 +45,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     - checks roles['targetRole'] in auth.user$ observable
 
 - app-routing.module
-    ...canActivate(redirectLoggedInToDashboard)
-    ...canActivate(redirectUnauthorizedToLogin)
+    - ...canActivate(redirectLoggedInToDashboard)
+    - ...canActivate(redirectUnauthorizedToLogin)
 
 - dahsboard-routing.module
-    canActivate: [UserNotVotedGuard],
-    canActivate: [UserVotedGuard],
+    - canActivate: [UserNotVotedGuard],
+    - canActivate: [UserVotedGuard],
 
 
 ## FIREBASE CRUD
@@ -64,8 +64,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
         - get()
 
 ### CREATE
--admin - create.component
-    - createOrUpdate
+- admin/create.component
+    - createOrUpdate()
         - .set() requires ID
         - .add() auto generates ID
 
