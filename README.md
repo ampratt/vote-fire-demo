@@ -3,6 +3,8 @@ AngularFire demo app with Firestore, Cloud Functions, and Firebase Hosting
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
+demo app running at: [vote-fire-dev.firebaseapp.com](https://vote-fire-dev.firebaseapp.com)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

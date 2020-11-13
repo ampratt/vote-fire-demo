@@ -4,6 +4,9 @@
       "hosting": {
         "vote-fire-demo": [
           "aaron-pratt"
+        ],
+        "angularFire-demo": [
+          "vote-fire-dev"
         ]
       }
     }
