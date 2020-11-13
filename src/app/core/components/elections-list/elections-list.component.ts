@@ -53,7 +53,7 @@ export class ElectionsListComponent implements OnInit {
 
   handleCloseElectionClicked(election: Election): void {
     if (this.auth.isAdmin(this.user)) {
-      this.spinner.show()
+      this.spinner.show();
       this.adminElectionService.closeAndCountVote(election)
         .pipe(takeUntil(this.unsubscribe$))
         .subscribe(
@@ -62,7 +62,7 @@ export class ElectionsListComponent implements OnInit {
               this.notification.success(`Election '${electionResult.title}' set to ${electionResult.status}`);
             }
           },
-          (err) => this.notification.error('A problem happens closing the election: ', err),
+          (err) => this.notification.error('A problem happened closing the election: ', err),
           () => this.spinner.hide());
     }
   }

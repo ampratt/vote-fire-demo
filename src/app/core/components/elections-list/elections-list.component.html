@@ -29,7 +29,7 @@
               type="button"
               label="Close Voting"
               class="p-mr-2 p-button-raised p-button-warning"
-              [disabled]="!!election.winner?.lentgth || election.status === ElectionStatus.CLOSED"
+              [disabled]="!!election.winner?.length || election.status === ElectionStatus.CLOSED"
               (click)="handleCloseElectionClicked(election)"></button>
     </div>
 
